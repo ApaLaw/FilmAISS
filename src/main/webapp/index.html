@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>FilmAISS</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+margin: 0;
+padding: 0;
+background-color: #333333;
+}
+body {
+  font-family: Arial;
+background-color: #333333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: grey;
+  color: black;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: grey;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+  #imageLogo {
+	  display: block;
+	  margin: 0 auto;
+      margin-top: 50px;
+      width: 20%;
+    }
+    
+</style>
+</head>
+<body>
+	<div>	
+		<form action="index.html">
+			<input type="image" id="imageLogo" alt="imageLogo" src="/resources/FilmAISS.png">
+		</form>
+	</div>
+	
+	
+	<form class="example" action="SearchController" method="post" style="margin-top: 30px; margin-right:auto;margin-left:auto;max-width:250px; max-height: 40px;">
+	  <input name="searchQuery" type="text" placeholder="Search for your film...">
+	  <button type="submit"><i class="fa fa-search"></i></button>
+	</form>
+		
+	<div>
+	<pre style="margin-top: 100px; display: flex; align-items: left; justify-content: center; color: white;">Here you will find your favourites films and series, and
+all about them:
+
+-Filming locations
+-Main Actors / Characters
+-Main Soundtrack
+-Interactive images
+-etc</pre>
+</div>
+</body>
+</html>

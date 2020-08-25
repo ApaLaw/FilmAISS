@@ -1,0 +1,368 @@
+swagger: "2.0"
+info:
+  description: This is a FilmAISS' API
+  version: 1.0.0
+  title: FilmAISS-api
+  # put the contact info for your development or API team
+  contact:
+    email: daviiprobeticoo55@gmail.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+schemes:
+- http
+host: filmaiss.appspot.com
+basePath: /api
+
+# tags are used for organizing operations
+tags:
+- name: comments
+  description: Comments
+- name: movies
+  description: Movie
+
+paths:
+  /comments:
+    get:
+      tags:
+      - comments
+      summary: Get comments
+      operationId: getComments
+      description: Get all comments
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: order
+        description: Order results by album or artist
+        required: false
+        type: string
+        enum:
+        - name
+        - -name
+        - message
+        - -message
+      - in: query
+        name: q
+        description: Query to filter
+        type: string
+        required: false
+      responses:
+        200:
+          description: Search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Comment'
+        400:
+          description: Bad request
+    post:
+      tags:
+      - comments
+      summary: Create a comment
+      operationId: createComment
+      description: Create a comment
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: comment
+        description: Comment to create
+        required: true
+        schema:
+          $ref: '#/definitions/Comment'
+      responses:
+        201:
+          description: Comment created
+          schema:
+            $ref: '#/definitions/Comment'
+        400:
+          description: Bad request
+    put:
+      tags:
+      - comments
+      summary: Update a comment
+      operationId: updateComment
+      description: Update a comment
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: comment
+        description: Comment to update
+        required: true
+        schema:
+          $ref: '#/definitions/Comment'
+      responses:
+        204:
+          description: Comment updated
+        400:
+          description: Bad request
+        404:
+          description: Comment not found
+  /comments/{id}:
+    get:
+      tags:
+      - comments
+      summary: Get one comments
+      operationId: getComment
+      description: Get one comment
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Id of the comment
+        required: true
+        type: string
+      responses:
+        200:
+          description: Comment matching id
+          schema:
+            $ref: '#/definitions/Comment'
+        404:
+          description: Comment not found
+    delete:
+      tags:
+      - comments
+      summary: Delete comment
+      operationId: deleteComment
+      description: Delete comment
+      parameters:
+      - in: path
+        name: id
+        description: Id of the comment
+        required: true
+        type: string
+      responses:
+        204:
+          description: Comment deleted
+        404:
+          description: Comment not found
+  /movies:
+    get:
+      tags:
+      - movies
+      summary: Get movies
+      operationId: getMovies
+      description: Get all movies
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: order
+        description: Order results by name
+        required: false
+        type: string
+        enum:
+        - title
+        - -title
+      - in: query
+        name: isEmpty
+        description: Filter movies with no comments
+        type: boolean
+        required: false
+      - in: query
+        name: name
+        description: Filter movies by name
+        type: string
+        required: false
+      responses:
+        200:
+          description: Search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Movie'
+        400:
+          description: Bad request
+    post:
+      tags:
+      - movies
+      summary: Create a list
+      operationId: createList
+      description: Create a List
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: movie
+        description: Movie to add
+        schema:
+          $ref: '#/definitions/Movie'
+      responses:
+        201:
+          description: List created
+          schema:
+            $ref: '#/definitions/Movie'
+        400:
+          description: Bad request
+    put:
+      tags:
+      - movies
+      summary: Update a movie
+      operationId: updateMovie
+      description: Update a Movie
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: movie
+        description: Movie to update
+        schema:
+          $ref: '#/definitions/Movie'
+      responses:
+        204:
+          description: Movie updated
+        400:
+          description: Bad request
+        404:
+          description: Movie not found
+  /movies/{id}:
+    get:
+      tags:
+      - movies
+      summary: Get one movie
+      operationId: getMovie
+      description: Get one movie
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Id of the movie
+        required: true
+        type: string
+      responses:
+        200:
+          description: Movie matching id
+          schema:
+            $ref: '#/definitions/Movie'
+        404:
+          description: Movie not found
+    delete:
+      tags:
+      - movies
+      summary: Delete movie
+      operationId: deleteMovie
+      description: Delete movie
+      parameters:
+      - in: path
+        name: id
+        description: Id of the movie
+        required: true
+        type: string
+      responses:
+        204:
+          description: Movie deleted
+        404:
+          description: Movie not found
+  /movies/{movieId}/{commentId}:
+    post:
+      tags:
+      - movies
+      summary: Add comment to list
+      operationId: addCommentToMovie
+      description: Add comment to movie
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: movieId
+        description: Id of the movie
+        required: true
+        type: string
+      - in: path
+        name: commentId
+        description: Id of the comment
+        required: true
+        type: string
+      responses:
+        201:
+          description: Comment added to list
+          schema:
+            $ref: '#/definitions/Movie'
+        400:
+          description: Bad request
+        404:
+          description: List or comment not found
+    delete:
+      tags:
+      - movies
+      summary: Delete comment from movie
+      operationId: deleteCommentFromMovie
+      description: Delete comment from movie
+      parameters:
+      - in: path
+        name: movieId
+        description: Id of the movie
+        required: true
+        type: string
+      - in: path
+        name: commentId
+        description: Id of the commment
+        required: true
+        type: string
+      responses:
+        204:
+          description: Comment deleted from movie
+        404:
+          description: Movie or comment not found
+definitions:
+  Comment:
+    type: object
+    required:
+    - name
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      message:
+        type: string
+    example: 
+      id: s1
+      name: Paco
+      message: Muy buena pelicula
+  Movie:
+    required:
+      - title
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      urlTrailer:
+        type: string
+      urlSoundtrack:
+        type: string
+      actors:
+        type: array
+        items: 
+          type: string
+      FilmingLocations:
+        type: array
+        items:
+          type: string
+      comments:
+        type: array
+        items:
+          $ref: '#/definitions/Comment'
+    example:
+      id: m1
+      title: Peli
+      urlTrailer: https://www.youtube.com/watch?v=TcMBFSGVi1c&t=4s
+      urlSoundtrack: https://www.deezer.com/es/track/659477712
+      actors:
+        - Corleone
+        - Fran Costelo
+      comments:
+        - id: s1
+          name: Paco
+          message: Muy buena pelicula

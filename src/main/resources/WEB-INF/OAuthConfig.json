@@ -1,0 +1,9 @@
+{	
+    "Youtube": { 
+        "tokenUrl": "https://www.googleapis.com/oauth2/v4/token",
+        "clientId": "798294343829-2jtk5vg8sb2060anrgui89op836p33j4.apps.googleusercontent.com",
+        "clientSecret": "pq5n2iOhur071AFEyh8mkJ54",
+        "authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+        "scopes": ["https://www.googleapis.com/auth/youtube"]
+    }
+}		
