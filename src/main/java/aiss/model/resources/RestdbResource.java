@@ -32,7 +32,7 @@ public class RestdbResource {
 			HttpPost posting = new HttpPost("https://filmaiss-a484.restdb.io/rest/comments");
 			StringEntity parametros = new StringEntity("{\"Nombre\":\""+nombre+"\",\"Mensaje\":\""+ mensaje +"\",\"Pelicula\":\""+ pelicula +"\"}");
 			posting.addHeader("content-type", "application/json");
-			posting.addHeader("x-apikey", "9ab6c8c0a86ba9e8250b46c2bb728d48d36e2");
+			posting.addHeader("x-apikey", "API-KEY");
 			posting.setEntity(parametros);
 			
 			HttpResponse respuesta = cliente.execute(posting);
