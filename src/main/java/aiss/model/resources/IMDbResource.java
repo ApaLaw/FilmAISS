@@ -12,7 +12,7 @@ import aiss.model.imdb.MovieSearch;
 
 public class IMDbResource {
 
-	private static final String IMDB_API_KEY = "4b752629-ea55-4469-95d6-5cedbed0f1ac";  // TODO: Change this API KEY for your personal Key
+	private static final String IMDB_API_KEY = "API-KEY";  // TODO: Change this API KEY for your personal Key
 	private static final Logger log = Logger.getLogger(IMDbResource.class.getName());
 	
 	
