@@ -11,7 +11,7 @@ import aiss.model.YouTube.Item;
 import aiss.model.YouTube.YouTube;
 
 public class YouTubeResource {
-	private static final String YT_API_KEY = "AIzaSyAXPvqjGqiKSLunyEOBmJlY40TtZQ9ffhI";  // TODO: Change this API KEY for your personal Key
+	private static final String YT_API_KEY = "API-Key";  // TODO: Change this API KEY for your personal Key
 	private static final Logger log = Logger.getLogger(YouTubeResource.class.getName());
 	
 	
