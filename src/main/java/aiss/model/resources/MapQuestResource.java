@@ -12,7 +12,7 @@ import aiss.model.mapquest.MapQuest;
 
 public class MapQuestResource {
 
-	private static final String MAP_API_KEY = "pQR5UIv2NKpo5UH9RGMrDKOuylEMRBwy";  // TODO: Change this API KEY for your personal Key
+	private static final String MAP_API_KEY = "API-KEY";  // TODO: Change this API KEY for your personal Key
 	private static final Logger log = Logger.getLogger(MapQuestResource.class.getName());
 	
 	
